@@ -1,0 +1,94 @@
+/* From Uiverse.io by Rkyz - Styled for Dark Theme / Heatmap */
+
+.flapping-loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.flapping-loader {
+  height: 60px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.dot-one,
+.dot-three {
+  background-color: #ffffff;
+  height: 32px;
+  width: 22px;
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+  animation: flap-wings 1s infinite ease-in-out;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.dot-three {
+  animation-delay: 0.2s;
+}
+
+.dot-two {
+  position: relative;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  animation: flap-wings 1s infinite ease-in-out;
+  animation-delay: 0.1s;
+  box-shadow: 0 0 20px rgba(231, 111, 81, 0.6);
+}
+
+.dot-two::before,
+.dot-two::after {
+  content: "";
+  position: absolute;
+  background-color: #ffffff;
+}
+
+.dot-two::before {
+  height: 22px;
+  width: 11px;
+  bottom: 22px;
+  left: 2px;
+  border-radius: 50% 50% 0 0;
+  transform: rotate(-20deg);
+}
+
+.dot-two::after {
+  height: 22px;
+  width: 11px;
+  bottom: 22px;
+  left: 19px;
+  transform: rotate(20deg);
+  border-radius: 50% 50% 0 0;
+}
+
+.dot-one::before,
+.dot-three::before {
+  content: "";
+  position: absolute;
+  height: 32px;
+  width: 22px;
+  top: 10px;
+  left: 0;
+  background-color: #212121;
+  border-radius: 50% 50% 0 0;
+}
+
+@keyframes flap-wings {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}

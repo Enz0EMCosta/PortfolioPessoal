@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-blue-primary: #2563eb;
+  --color-blue-dark: #1d4ed8;
+  --color-blue-light: #60a5fa;
+  --color-blue-subtle: #eff6ff;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f8fafc;
+  --color-border: #cbd5e1;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f3efe6;
+  color: #0f172a;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+.ink-shell {
+  position: relative;
+  background-color: #f3efe6;
+}
+
+/* Subtle modern grid pattern */
+.ink-grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(37, 99, 235, 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.024) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+/* Organic ink stains & ambient orbs */
+.ink-blob {
+  position: absolute;
+  border-radius: 64% 36% 52% 48% / 46% 54% 46% 54%;
+  filter: blur(100px);
+  opacity: 0.65;
+  pointer-events: none;
+  animation: drift 20s ease-in-out infinite alternate;
+}
+
+.blob-one {
+  width: 32rem;
+  height: 32rem;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(59, 130, 246, 0.08) 50%, transparent 70%);
+  top: -2%;
+  left: 6%;
+}
+
+.blob-two {
+  width: 38rem;
+  height: 38rem;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.14) 0%, rgba(147, 197, 253, 0.08) 55%, transparent 75%);
+  top: 22%;
+  right: 4%;
+  animation-delay: 2.5s;
+}
+
+.blob-three {
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(96, 165, 250, 0.06) 60%, transparent 75%);
+  bottom: 8%;
+  left: 20%;
+  animation-delay: 5s;
+}
+
+/* ── Organic Ink & Paper Card Language (Replaces artificial geometric rounding) ── */
+.ink-organic-card,
+.project-card,
+.glass-card,
+.glass-panel {
+  position: relative;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  /* Imperfect hand-cut paper / ink-stamped contour */
+  border-radius: 26px 34px 22px 30px;
+  border: 1.5px solid rgba(15, 23, 42, 0.14);
+  box-shadow:
+    0 16px 40px -15px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px) rotate(-0.3deg);
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow:
+    0 24px 60px -18px rgba(37, 99, 235, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Organic ink stamped badges */
+.ink-badge,
+.ink-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 1.1rem;
+  /* Stamped imperfect oval */
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px solid rgba(15, 23, 42, 0.22);
+  box-shadow: 1px 2px 0px rgba(15, 23, 42, 0.08);
+  color: #1e293b;
+}
+
+/* Organic Button with ink press effect */
+.ink-organic-button {
+  border-radius: 38px 14px 34px 16px / 16px 36px 14px 38px;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ink-organic-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-radius: 16px 36px 14px 38px / 38px 14px 34px 16px;
+}
+
+.ink-organic-button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.ink-title {
+  letter-spacing: -0.05em;
+  color: #0f172a;
+}
+
+/* Bold signature electric blue typographic aura with ink bleed */
+.ink-bleed {
+  position: relative;
+  display: inline-block;
+  color: #2563eb;
+  text-shadow: 0 0 30px rgba(37, 99, 235, 0.24);
+}
+
+.ink-highlight {
+  display: inline-block;
+  color: #2563eb;
+}
+
+.project-image-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px 24px 18px 22px;
+  background: #f1f5f9;
+  isolation: isolate;
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+}
+
+.project-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(15, 23, 42, 0.45));
+  z-index: 1;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s ease;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.04);
+  filter: saturate(1.15) contrast(1.05);
+}
+
+.meta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  background: rgba(241, 245, 249, 0.9);
+  border: 1.2px solid rgba(15, 23, 42, 0.18);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: #334155;
+  box-shadow: 1px 1px 0px rgba(15, 23, 42, 0.06);
+}
+
+.ink-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+/* Organic rough ink divider between sections */
+.ink-section-divider {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(15, 23, 42, 0.12) 15%, rgba(37, 99, 235, 0.3) 50%, rgba(15, 23, 42, 0.12) 85%, transparent 100%);
+}
+
+.ink-section-divider::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 6px;
+  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.3) 0%, transparent 80%);
+  pointer-events: none;
+}
+
+/* Minimalist scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3efe6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(37, 99, 235, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(37, 99, 235, 0.55);
+}
+
+@keyframes drift {
+  0% { transform: translate3d(0, 0, 0) scale(0.96); }
+  50% { transform: translate3d(20px, -15px, 0) scale(1.06); }
+  100% { transform: translate3d(-15px, 20px, 0) scale(1); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.04); }
+}
+
+.animate-glow-pulse {
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
